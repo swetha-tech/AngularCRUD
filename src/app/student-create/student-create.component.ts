@@ -18,7 +18,6 @@ export class StudentCreateComponent implements OnInit {
  createStudent(){
  this.service.createStudent(this.student).subscribe(data=>{
  this.message=data;
- console.log(data);
  });
  this.student=new Student();
  }

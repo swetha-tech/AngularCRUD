@@ -37,4 +37,3 @@ export class StudentAllComponent implements OnInit {
     this.router.navigate(['edit',id]);
     }
    }
-   

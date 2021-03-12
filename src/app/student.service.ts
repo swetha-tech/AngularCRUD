@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Student } from './student';
 import { Observable } from 'rxjs';
 import { Message } from './message';
@@ -9,19 +9,14 @@ import { Message } from './message';
 export class StudentService {
  private baseUrl : string = 'http://localhost:9898/springboot-crudrest/rest/student';
  constructor(private http:HttpClient) { }
-
  getAllStudents():Observable<Student[]>{
-    return this.http.get<Student[]>(`${this.baseUrl}/all`);
+ return this.http.get<Student[]>(`${this.baseUrl}/all`);
  }
  deleteOneStudent(id:number):Observable<Message>{
  return this.http.delete<Message>(`${this.baseUrl}/remove/${id}`);
  }
  createStudent(student:Student):Observable<Message>{
-    let httpOptions = {
-        headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*' , 'Content-Type': 'application/json' })
-      };
-    
-    return this.http.post<Message>(`${this.baseUrl}/save`,student,httpOptions);
+ return this.http.post<Message>(`${this.baseUrl}/save`,student);
  }
  getOneStudent(id:number):Observable<Student>{
  return this.http.get<Student>(`${this.baseUrl}/one/${id}`);

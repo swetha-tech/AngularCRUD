@@ -9,10 +9,10 @@ import { Student } from '../student';
 })
 export class StudentEditComponent implements OnInit {
  student: Student = new Student;
- id : number = 0;
+ id!: number;
  constructor(private service:StudentService,private activeRouter:ActivatedRoute, private router:Router) { }
  ngOnInit(): void {
- this.student = new Student();
+ this.student =new Student();
  this.id=this.activeRouter.snapshot.params['id'];
  this.service.getOneStudent(this.id).subscribe(
  data=>{
